@@ -1,5 +1,7 @@
 ﻿using SimpleCreditCalculator.Models.Interfaces;
 
+using System.Threading.Tasks;
+
 namespace SimpleCreditCalculator.Services
 {
     public interface ICreditCalculatorService
@@ -7,6 +9,6 @@ namespace SimpleCreditCalculator.Services
         /// <summary>
         /// Получить рассчитанные данные по кредиту
         /// </summary>
-        IOutputDataCredit GetOutputDataCreditDetails(IInputDataCredit inputDataCredit);
+        Task<IOutputDataCredit> GetOutputDataCreditDetails(IInputDataCredit inputDataCredit);
     }
 }

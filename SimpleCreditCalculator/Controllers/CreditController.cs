@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SimpleCreditCalculator.Models;
@@ -27,14 +29,14 @@ namespace SimpleCreditCalculator.Controllers
         }
 
         [HttpPost]
-        public IActionResult PaymentSchedule(InputDataCredit inputDataCredit)
+        public async Task<IActionResult> PaymentSchedule(InputDataCredit inputDataCredit)
         {
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("Index", "Credit");
             }
 
-            _outputDataCreditDetails = _creditCalculatorService.GetOutputDataCreditDetails(inputDataCredit);
+            _outputDataCreditDetails = await _creditCalculatorService.GetOutputDataCreditDetails(inputDataCredit);
 
             return View();
         }
