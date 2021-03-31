@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 using SimpleCreditCalculator.Services;
+using SimpleCreditCalculator.Services.Interfaces;
 
 namespace SimpleCreditCalculator
 {
@@ -19,6 +21,7 @@ namespace SimpleCreditCalculator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddOpenApiDocument();
             services.AddScoped<ICreditCalculatorService, CreditCalculatorService>();
             services.AddControllersWithViews();
         }
@@ -39,6 +42,10 @@ namespace SimpleCreditCalculator
             
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            // Add OpenAPI/Swagger middlewares
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseRouting();
 

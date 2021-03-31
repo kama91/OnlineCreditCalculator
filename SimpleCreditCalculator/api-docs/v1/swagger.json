@@ -1,0 +1,115 @@
+{
+  "x-generator": "NSwag v13.10.8.0 (NJsonSchema v10.3.11.0 (Newtonsoft.Json v12.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "My Title",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/DataCredit/creditdetails": {
+      "get": {
+        "tags": [
+          "DataCredit"
+        ],
+        "operationId": "DataCredit_GetOutputCreditDetails",
+        "requestBody": {
+          "x-name": "inputDataCredit",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InputDataCredit"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IOutputDataCredit"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "IOutputDataCredit": {
+        "type": "object",
+        "x-abstract": true,
+        "additionalProperties": false,
+        "properties": {
+          "paymentDetails": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/IPaymentDetails"
+            }
+          },
+          "overPayment": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      },
+      "IPaymentDetails": {
+        "type": "object",
+        "x-abstract": true,
+        "additionalProperties": false,
+        "properties": {
+          "paymentNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paymentDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentBody": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "paymentPercent": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "balanceDebt": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      },
+      "InputDataCredit": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sumOfCredit": {
+            "type": "number",
+            "format": "decimal",
+            "maximum": 10000000000.0,
+            "minimum": 1.0
+          },
+          "creditTerm": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 100000.0,
+            "minimum": 1.0
+          },
+          "interestRateOfYear": {
+            "type": "number",
+            "format": "decimal",
+            "maximum": 100.0,
+            "minimum": 0.1
+          }
+        }
+      }
+    }
+  }
+}

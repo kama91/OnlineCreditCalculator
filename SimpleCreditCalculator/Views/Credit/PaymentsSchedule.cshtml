@@ -1,4 +1,6 @@
-﻿@{
+﻿@model SimpleCreditCalculator.Models.OutputDataCredit
+
+@{
     ViewData["Title"] = "Таблица платежей";
 }
 
@@ -13,10 +15,10 @@
     <div class="row">
         <div class="col-md-2">
             <label>Переплата по кредиту составляет:</label>
-            <input id="overPayment" readonly="readonly" onload="getOverPayment()" />
+            <input id="overPayment" readonly="readonly" onload="setOverPayment()" />
         </div>
         <div class="col-md-10">
-            <div id="paymentScheduleGrid" align="right"></div>
+            <div id="paymentsScheduleGrid" align="right"></div>
         </div>
     </div>
 </div>
@@ -26,22 +28,13 @@
     <script src="~/lib/jsgrid/js/jsgrid.min.js"></script>
 
     <script>
-        window.onload = getOverPayment;
+        window.onload = setOverPayment;
         $(function () {
-            $("#paymentScheduleGrid").jsGrid({
+            const paymentDetails = JSON.parse('@Html.Raw(Json.Serialize(Model.PaymentDetails))')
+            $("#paymentsScheduleGrid").jsGrid({
                 autoload: true,
                 editing: false,
-                noDataContent: "",
-                controller: {
-                    loadData: function (filter) {
-                        return $.ajax({
-                            type: "GET",
-                            url: "/credit/paymentschedule",
-                            data: filter,
-                            dataType: "JSON"
-                        }).done((result) => {console.log("Data loaded")});
-                    }
-                },
+                data: paymentDetails,
                 fields: [
                     { name: "paymentNumber", title: "Номер платежа", type: "number", align: "center", width: "auto", height: "auto" },
                     { name: "paymentDate", title: "Дата платежа", type: "text", align: "center", width: "auto", height: "auto" },
@@ -54,14 +47,9 @@
             });
         });
 
-        function getOverPayment() {
-            return $.ajax({
-                url: '/credit/overpayment',
-                success: function(data) {
-                    const input = document.getElementById("overPayment");
-                    input.value = data;
-                }
-            });
+        function setOverPayment() {
+            const input = document.getElementById("overPayment");
+            input.value = '@Model.OverPayment';
         }
     </script>
 }

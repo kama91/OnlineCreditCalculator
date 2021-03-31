@@ -1,20 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NSwag.Annotations;
 using SimpleCreditCalculator.Models;
-using SimpleCreditCalculator.Models.Interfaces;
-using SimpleCreditCalculator.Services;
+using SimpleCreditCalculator.Services.Interfaces;
 
 namespace SimpleCreditCalculator.Controllers
 {
+    [OpenApiIgnore]
     public class CreditController : Controller
     {
         private readonly ILogger<CreditController> _logger;
         private readonly ICreditCalculatorService _creditCalculatorService;
-        private static IOutputDataCredit _outputDataCreditDetails;
 
         public CreditController(ICreditCalculatorService creditCalculatorService, ILogger<CreditController> logger)
         {
@@ -29,28 +27,16 @@ namespace SimpleCreditCalculator.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PaymentSchedule(InputDataCredit inputDataCredit)
+        public async Task<IActionResult> PaymentsSchedule(InputDataCredit inputDataCredit)
         {
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("Index", "Credit");
             }
 
-            _outputDataCreditDetails = await _creditCalculatorService.GetOutputDataCreditDetails(inputDataCredit);
+            var creditDetails = await _creditCalculatorService.GetOutputCreditDetails(inputDataCredit);
 
-            return View();
-        }
-
-        [HttpGet("/[controller]/paymentschedule")]
-        public IReadOnlyCollection<IPaymentDetails> GetPaymentsSchedule()
-        {
-            return _outputDataCreditDetails.PaymentDetails;
-        }
-
-        [HttpGet("/[controller]/overpayment")]
-        public decimal GetOverPayment()
-        {
-            return _outputDataCreditDetails.OverPayment;
+            return View(creditDetails);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

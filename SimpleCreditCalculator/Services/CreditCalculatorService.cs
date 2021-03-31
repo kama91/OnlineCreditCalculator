@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
 using Microsoft.Extensions.Logging;
 using SimpleCreditCalculator.Models;
 using SimpleCreditCalculator.Models.Interfaces;
+using SimpleCreditCalculator.Services.Interfaces;
 
 namespace SimpleCreditCalculator.Services
 {
@@ -14,40 +14,40 @@ namespace SimpleCreditCalculator.Services
 
         public CreditCalculatorService(ILogger<CreditCalculatorService> logger)
         {
-            _logger = logger;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public Task<IOutputDataCredit> GetOutputDataCreditDetails(IInputDataCredit inputDataCredit)
+        public Task<IOutputDataCredit> GetOutputCreditDetails(IInputDataCredit inputDataCredit)
         {
             return Task.Run(() =>
             {
-                    if (inputDataCredit == null)
-                    {
-                        throw new ArgumentNullException(nameof(inputDataCredit));
-                    }
+                if (inputDataCredit == null)
+                {
+                    throw new ArgumentNullException(nameof(inputDataCredit));
+                }
 
-                    var annuityPaymentFactor = inputDataCredit.InterestRateOfYear / 100 / 12;
-                    var amountPayment = GetAmountPayment(inputDataCredit);
-                    var paymentsDetails = new List<IPaymentDetails>(inputDataCredit.CreditTerm);
-                    var date = DateTime.Now.Date;
-                    var balanceDebt = inputDataCredit.SumOfCredit;
-                    for (var j = 0; j < inputDataCredit.CreditTerm; j++)
-                    {
-                        var paymentPercent = balanceDebt * annuityPaymentFactor;
-                        var paymentBody = amountPayment - paymentPercent;
-                        balanceDebt  -= paymentBody;
-                        paymentsDetails.Add(new PaymentDetails(
-                            j + 1,
-                            date.ToString("dd/MM/yyyy"),
-                            Math.Round(paymentBody, 2),
-                            Math.Round(paymentPercent, 2),
-                            Math.Round(balanceDebt, 2)
-                        ));
+                var annuityPaymentFactor = inputDataCredit.InterestRateOfYear / 100 / 12;
+                var amountPayment = GetAmountPayment(inputDataCredit);
+                var paymentsDetails = new List<IPaymentDetails>(inputDataCredit.CreditTerm);
+                var date = DateTime.Now.Date;
+                var balanceDebt = inputDataCredit.SumOfCredit;
+                for (var j = 0; j < inputDataCredit.CreditTerm; j++)
+                {
+                    var paymentPercent = balanceDebt * annuityPaymentFactor;
+                    var paymentBody = amountPayment - paymentPercent;
+                    balanceDebt -= paymentBody;
+                    paymentsDetails.Add(new PaymentDetails(
+                        j + 1,
+                        date.ToString("dd/MM/yyyy"),
+                        Math.Round(paymentBody, 2),
+                        Math.Round(paymentPercent, 2),
+                        Math.Round(balanceDebt, 2)
+                    ));
 
-                        date = date.AddMonths(1);
-                    }
+                    date = date.AddMonths(1);
+                }
 
-                    return (IOutputDataCredit)new OutputDataCredit(paymentsDetails, GetOverPayment(inputDataCredit));
+                return (IOutputDataCredit)new OutputDataCredit(paymentsDetails, GetOverPayment(inputDataCredit));
             });
         }
 

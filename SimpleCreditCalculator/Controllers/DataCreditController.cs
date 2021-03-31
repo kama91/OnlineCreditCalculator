@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+
 using SimpleCreditCalculator.Models;
 using SimpleCreditCalculator.Models.Interfaces;
-using SimpleCreditCalculator.Services;
+using SimpleCreditCalculator.Services.Interfaces;
 
 using System.Threading.Tasks;
 
@@ -24,9 +25,10 @@ namespace SimpleCreditCalculator.Controllers
         }
         
         [HttpGet("creditdetails")]
-        public async Task<IOutputDataCredit> GetOutputDataCreditDetails([FromBody] InputDataCredit inputDataCredit)
+        public async Task<IOutputDataCredit> GetOutputCreditDetails([FromBody] InputDataCredit inputDataCredit)
         {
-            var creditDetails =  await _creditCalculatorService.GetOutputDataCreditDetails(inputDataCredit);
+             var creditDetails = await _creditCalculatorService.GetOutputCreditDetails(inputDataCredit);
+
             return creditDetails;
         }
     }

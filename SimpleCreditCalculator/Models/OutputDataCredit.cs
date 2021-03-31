@@ -5,11 +5,11 @@ namespace SimpleCreditCalculator.Models
 {
     public class OutputDataCredit : IOutputDataCredit
     {
-        public IReadOnlyCollection<IPaymentDetails> PaymentDetails { get; }
+        public ICollection<IPaymentDetails> PaymentDetails { get; }
         public decimal OverPayment { get; }
 
         public OutputDataCredit(
-            IReadOnlyCollection<IPaymentDetails> paymentDetails,
+            ICollection<IPaymentDetails> paymentDetails,
             decimal overPayment)
         {
             PaymentDetails = paymentDetails;
