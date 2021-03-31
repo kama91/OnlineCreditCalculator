@@ -22,13 +22,16 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleCreditCalculator.Models\SimpleCreditCalculator.Models.csproj" />
+  </ItemGroup>
+
 	<PropertyGroup>
 		<ApiDocsFolder>api-docs/v1</ApiDocsFolder>
 	</PropertyGroup>
 
 	<Target Name="SwaggerFile" AfterTargets="Build">
-		<Exec EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development"
-			  Command="$(NSwagExe_Net50) aspnetcore2openapi /assembly:$(TargetDir)SimpleCreditCalculator.dll /output:$(ApiDocsFolder)/swagger.json" />
+		<Exec EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" Command="$(NSwagExe_Net50) aspnetcore2openapi /assembly:$(TargetDir)SimpleCreditCalculator.dll /output:$(ApiDocsFolder)/swagger.json" />
 	</Target>
 
 	<Target Name="CsharpClientGeneration" AfterTargets="SwaggerFile">

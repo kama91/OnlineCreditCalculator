@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCreditCalculator", "SimpleCreditCalculator\SimpleCreditCalculator.csproj", "{D2458A7F-CF5E-4B83-945F-1DD7703A6C8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientConsole", "ApiClientConsole\ApiClientConsole.csproj", "{9692853D-60D9-4C75-B7DB-88AB11F391EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientConsole", "ApiClientConsole\ApiClientConsole.csproj", "{9692853D-60D9-4C75-B7DB-88AB11F391EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCreditCalculator.Models", "SimpleCreditCalculator.Models\SimpleCreditCalculator.Models.csproj", "{D317024B-BF5D-42F8-9496-3D0D7F73D908}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9692853D-60D9-4C75-B7DB-88AB11F391EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9692853D-60D9-4C75-B7DB-88AB11F391EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9692853D-60D9-4C75-B7DB-88AB11F391EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D317024B-BF5D-42F8-9496-3D0D7F73D908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D317024B-BF5D-42F8-9496-3D0D7F73D908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D317024B-BF5D-42F8-9496-3D0D7F73D908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D317024B-BF5D-42F8-9496-3D0D7F73D908}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

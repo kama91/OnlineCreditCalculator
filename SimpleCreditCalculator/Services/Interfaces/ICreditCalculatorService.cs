@@ -1,7 +1,4 @@
-﻿using SimpleCreditCalculator.Models;
-using SimpleCreditCalculator.Models.Interfaces;
-
-using System.Collections.Concurrent;
+﻿using SimpleCreditCalculator.Models.Interfaces;
 using System.Threading.Tasks;
 
 namespace SimpleCreditCalculator.Services.Interfaces
