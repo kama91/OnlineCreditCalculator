@@ -56,6 +56,7 @@ namespace ApiClient
         partial void PrepareRequest(HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
         partial void PrepareRequest(HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
         partial void ProcessResponse(HttpClient client, System.Net.Http.HttpResponseMessage response);
+        /// <summary>Получить детали рассчитанного кредита</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public System.Threading.Tasks.Task<IOutputDataCredit> GetOutputCreditDetailsAsync(InputDataCredit inputDataCredit)
         {
@@ -63,6 +64,7 @@ namespace ApiClient
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Получить детали рассчитанного кредита</summary>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<IOutputDataCredit> GetOutputCreditDetailsAsync(InputDataCredit inputDataCredit, System.Threading.CancellationToken cancellationToken)
         {
@@ -252,18 +254,23 @@ namespace ApiClient
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.3.11.0 (Newtonsoft.Json v12.0.0.0)")]
     public abstract partial class IPaymentDetails 
     {
+        /// <summary>Порядковый номер платежа</summary>
         [Newtonsoft.Json.JsonProperty("paymentNumber", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int PaymentNumber { get; set; }
     
+        /// <summary>Дата платежа</summary>
         [Newtonsoft.Json.JsonProperty("paymentDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string PaymentDate { get; set; }
     
+        /// <summary>Размер платежа по телу кредита</summary>
         [Newtonsoft.Json.JsonProperty("paymentBody", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal PaymentBody { get; set; }
     
+        /// <summary>Размер платежа по процентам</summary>
         [Newtonsoft.Json.JsonProperty("paymentPercent", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal PaymentPercent { get; set; }
     
+        /// <summary>Остаток основного долга</summary>
         [Newtonsoft.Json.JsonProperty("balanceDebt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public decimal BalanceDebt { get; set; }
     

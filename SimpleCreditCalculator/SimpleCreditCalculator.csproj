@@ -20,6 +20,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +29,10 @@
 
 	<PropertyGroup>
 		<ApiDocsFolder>api-docs/v1</ApiDocsFolder>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DocumentationFile>K:\GitHub\SimpleCreditCalculator\SimpleCreditCalculator\SimpleCreditCalculator.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<Target Name="SwaggerFile" AfterTargets="Build">

@@ -11,6 +11,7 @@
         "tags": [
           "DataCredit"
         ],
+        "summary": "Получить детали рассчитанного кредита",
         "operationId": "DataCredit_GetOutputCreditDetails",
         "requestBody": {
           "x-name": "inputDataCredit",
@@ -66,22 +67,27 @@
         "properties": {
           "paymentNumber": {
             "type": "integer",
+            "description": "Порядковый номер платежа",
             "format": "int32"
           },
           "paymentDate": {
             "type": "string",
+            "description": "Дата платежа",
             "nullable": true
           },
           "paymentBody": {
             "type": "number",
+            "description": "Размер платежа по телу кредита",
             "format": "decimal"
           },
           "paymentPercent": {
             "type": "number",
+            "description": "Размер платежа по процентам",
             "format": "decimal"
           },
           "balanceDebt": {
             "type": "number",
+            "description": "Остаток основного долга",
             "format": "decimal"
           }
         }

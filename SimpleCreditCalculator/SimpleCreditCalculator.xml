@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimpleCreditCalculator</name>
+    </assembly>
+    <members>
+        <member name="T:SimpleCreditCalculator.Controllers.DataCreditController">
+            <summary>
+            Контроллер для доступа по web api
+            </summary>
+        </member>
+        <member name="M:SimpleCreditCalculator.Controllers.DataCreditController.GetOutputCreditDetails(SimpleCreditCalculator.Models.InputDataCredit)">
+            <summary>
+            Получить детали рассчитанного кредита
+            </summary>
+            <param name="inputDataCredit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleCreditCalculator.Services.Interfaces.ICreditCalculatorService.GetOutputCreditDetails(SimpleCreditCalculator.Models.Interfaces.IInputDataCredit)">
+            <summary>
+            Получить рассчитанные данные по кредиту
+            </summary>
+        </member>
+    </members>
+</doc>

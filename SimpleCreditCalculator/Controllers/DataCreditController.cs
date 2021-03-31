@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace SimpleCreditCalculator.Controllers
 {
+    /// <summary>
+    /// Контроллер для доступа по web api
+    /// </summary>
     [Route("/api/[controller]")]
     [ApiController]
     public class DataCreditController : ControllerBase
@@ -23,11 +26,16 @@ namespace SimpleCreditCalculator.Controllers
             _creditCalculatorService = creditCalculatorService ?? throw new System.ArgumentNullException(nameof(creditCalculatorService));
             _logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
         }
-        
+
+        /// <summary>
+        /// Получить детали рассчитанного кредита
+        /// </summary>
+        /// <param name="inputDataCredit"></param>
+        /// <returns></returns>
         [HttpGet("creditdetails")]
         public async Task<IOutputDataCredit> GetOutputCreditDetails([FromBody] InputDataCredit inputDataCredit)
         {
-             var creditDetails = await _creditCalculatorService.GetOutputCreditDetails(inputDataCredit);
+            var creditDetails = await _creditCalculatorService.GetOutputCreditDetails(inputDataCredit);
 
             return creditDetails;
         }

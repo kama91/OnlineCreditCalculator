@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimpleCreditCalculator.Models</name>
+    </assembly>
+    <members>
+        <member name="P:SimpleCreditCalculator.Models.Interfaces.IInputDataCredit.SumOfCredit">
+            <summary>
+            Сумма кредита
+            </summary>
+        </member>
+        <member name="P:SimpleCreditCalculator.Models.Interfaces.IInputDataCredit.CreditTerm">
+            <summary>
+            Срок кредита
+            </summary>
+        </member>
+        <member name="P:SimpleCreditCalculator.Models.Interfaces.IInputDataCredit.InterestRateOfYear">
+            <summary>
+            Процентная ставка по кредиту
+            </summary>
+        </member>
+        <member name="P:SimpleCreditCalculator.Models.Interfaces.IPaymentDetails.PaymentNumber">
+            <summary>
+            Порядковый номер платежа
+            </summary>
+        </member>
+        <member name="P:SimpleCreditCalculator.Models.Interfaces.IPaymentDetails.PaymentDate">
+            <summary>
+            Дата платежа
+            </summary>
+        </member>
+        <member name="P:SimpleCreditCalculator.Models.Interfaces.IPaymentDetails.PaymentBody">
+            <summary>
+            Размер платежа по телу кредита
+            </summary>
+        </member>
+        <member name="P:SimpleCreditCalculator.Models.Interfaces.IPaymentDetails.PaymentPercent">
+            <summary>
+            Размер платежа по процентам
+            </summary>
+        </member>
+        <member name="P:SimpleCreditCalculator.Models.Interfaces.IPaymentDetails.BalanceDebt">
+            <summary>
+            Остаток основного долга
+            </summary>
+        </member>
+    </members>
+</doc>
