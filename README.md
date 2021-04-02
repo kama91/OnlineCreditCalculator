@@ -1,5 +1,5 @@
-# OnlineCreditCalculator
-Реализовать простой кредитный калькулятор (web-приложение).
+# SimpleCreditCalculator
+Реализовать простой кредитный калькулятор на основе аннуитетного платежа (web-приложение).
 
 Стек:
 c# asp.mvc + фронт на bootstrap + jQuery
