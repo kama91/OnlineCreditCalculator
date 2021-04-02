@@ -12,7 +12,7 @@ namespace ApiClientConsole
             {
             }
 
-            var client = new DataCreditClient("https://localhost:44345/");
+            var client = new DataCreditClient("https://localhost:44345");
             var data = await client.GetOutputCreditDetailsAsync(
                 new InputDataCredit
                 {

@@ -46,7 +46,7 @@ namespace SimpleCreditCalculator.Services
 
                     date = date.AddMonths(1);
                 }
-
+               
                 return (IOutputDataCredit)new OutputDataCredit(paymentsDetails, GetOverPayment(inputDataCredit));
             });
         }

@@ -32,11 +32,11 @@ namespace SimpleCreditCalculator.Controllers
         /// <param name="inputDataCredit"></param>
         /// <returns></returns>
         [HttpGet("creditdetails")]
-        public async Task<IOutputDataCredit> GetOutputCreditDetails([FromBody] InputDataCredit inputDataCredit)
+        public async Task<OutputDataCredit> GetOutputCreditDetails([FromBody] InputDataCredit inputDataCredit)
         {
             var creditDetails = await _creditCalculatorService.GetOutputCreditDetails(inputDataCredit);
 
-            return creditDetails;
+            return (OutputDataCredit)creditDetails;
         }
     }
 }

@@ -31,7 +31,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/IOutputDataCredit"
+                  "$ref": "#/components/schemas/OutputDataCredit"
                 }
               }
             }
@@ -42,16 +42,15 @@
   },
   "components": {
     "schemas": {
-      "IOutputDataCredit": {
+      "OutputDataCredit": {
         "type": "object",
-        "x-abstract": true,
         "additionalProperties": false,
         "properties": {
           "paymentDetails": {
             "type": "array",
             "nullable": true,
             "items": {
-              "$ref": "#/components/schemas/IPaymentDetails"
+              "$ref": "#/components/schemas/PaymentDetails"
             }
           },
           "overPayment": {
@@ -60,34 +59,28 @@
           }
         }
       },
-      "IPaymentDetails": {
+      "PaymentDetails": {
         "type": "object",
-        "x-abstract": true,
         "additionalProperties": false,
         "properties": {
           "paymentNumber": {
             "type": "integer",
-            "description": "Порядковый номер платежа",
             "format": "int32"
           },
           "paymentDate": {
             "type": "string",
-            "description": "Дата платежа",
             "nullable": true
           },
           "paymentBody": {
             "type": "number",
-            "description": "Размер платежа по телу кредита",
             "format": "decimal"
           },
           "paymentPercent": {
             "type": "number",
-            "description": "Размер платежа по процентам",
             "format": "decimal"
           },
           "balanceDebt": {
             "type": "number",
-            "description": "Остаток основного долга",
             "format": "decimal"
           }
         }

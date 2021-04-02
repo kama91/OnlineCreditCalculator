@@ -1,18 +1,20 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+
 using SimpleCreditCalculator.Models.Interfaces;
 
 namespace SimpleCreditCalculator.Models
 {
     public class OutputDataCredit : IOutputDataCredit
     {
-        public ICollection<IPaymentDetails> PaymentDetails { get; }
+        public List<PaymentDetails> PaymentDetails { get; }
         public decimal OverPayment { get; }
 
         public OutputDataCredit(
-            ICollection<IPaymentDetails> paymentDetails,
+            IEnumerable<IPaymentDetails> paymentDetails,
             decimal overPayment)
         {
-            PaymentDetails = paymentDetails;
+            PaymentDetails = paymentDetails.Cast<PaymentDetails>().ToList();
             OverPayment = overPayment;
         }
     }

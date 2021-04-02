@@ -33,15 +33,16 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	  <DocumentationFile>K:\GitHub\SimpleCreditCalculator\SimpleCreditCalculator\SimpleCreditCalculator.xml</DocumentationFile>
+	  <DocumentationFile>..\SimpleCreditCalculator.Web\SimpleCreditCalculator.Web.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<Target Name="SwaggerFile" AfterTargets="Build">
-		<Exec EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" Command="$(NSwagExe_Net50) aspnetcore2openapi /assembly:$(TargetDir)SimpleCreditCalculator.dll /output:$(ApiDocsFolder)/swagger.json" />
+		<Exec EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development"
+			  Command="$(NSwagExe_Net50) aspnetcore2openapi /assembly:$(TargetDir)SimpleCreditCalculator.Web.dll /output:$(ApiDocsFolder)/swagger.json" />
 	</Target>
 
 	<Target Name="CsharpClientGeneration" AfterTargets="SwaggerFile">
-		<Exec Command="$(NSwagExe_Net50) run $(ApiDocsFolder)/nswag.json /variables:OutDir=$(SolutionDir)ApiClientConsole/AppApiClient.cs" />
+		<Exec Command="$(NSwagExe_Net50) run $(ApiDocsFolder)/nswag.json /variables:OutDir=$(SolutionDir)SimpleCreditCalculator.WebApiClient/ConsoleWebApiClient.cs" />
 	</Target>
 
 </Project>
