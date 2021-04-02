@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SimpleCreditCalculator.BL\SimpleCreditCalculator.BL\SimpleCreditCalculator.BL.csproj" />
+    <ProjectReference Include="..\SimpleCreditCalculator.BL\SimpleCreditCalculator.BL.csproj" />
     <ProjectReference Include="..\SimpleCreditCalculator.Models\SimpleCreditCalculator.Models.csproj" />
   </ItemGroup>
 
