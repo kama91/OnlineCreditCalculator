@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimpleCreditCalculator.BL</name>
+    </assembly>
+    <members>
+        <member name="M:SimpleCreditCalculator.BL.Services.Interfaces.ICreditCalculatorService.GetOutputCreditDetails(SimpleCreditCalculator.Models.Interfaces.IInputDataCredit)">
+            <summary>
+            Получить рассчитанные данные по кредиту
+            </summary>
+        </member>
+    </members>
+</doc>

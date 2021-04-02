@@ -1,7 +1,7 @@
 ﻿using SimpleCreditCalculator.Models.Interfaces;
 using System.Threading.Tasks;
 
-namespace SimpleCreditCalculator.Services.Interfaces
+namespace SimpleCreditCalculator.BL.Services.Interfaces
 {
     public interface ICreditCalculatorService
     {

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using SimpleCreditCalculator.BL.Services.Interfaces;
 using SimpleCreditCalculator.Models;
 using SimpleCreditCalculator.Models.Interfaces;
-using SimpleCreditCalculator.Services.Interfaces;
 
 namespace SimpleCreditCalculator.Services
 {
     public class CreditCalculatorService : ICreditCalculatorService
     {
-        private ILogger<ICreditCalculatorService> _logger;
+        private readonly ILogger<ICreditCalculatorService> _logger;
 
         public CreditCalculatorService(ILogger<CreditCalculatorService> logger)
         {

@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using SimpleCreditCalculator.BL.Services.Interfaces;
 using SimpleCreditCalculator.Services;
-using SimpleCreditCalculator.Services.Interfaces;
 
 namespace SimpleCreditCalculator
 {

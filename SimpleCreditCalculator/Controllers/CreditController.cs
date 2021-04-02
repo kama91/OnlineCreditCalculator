@@ -3,8 +3,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
+using SimpleCreditCalculator.BL.Services.Interfaces;
 using SimpleCreditCalculator.Models;
-using SimpleCreditCalculator.Services.Interfaces;
+using System;
 
 namespace SimpleCreditCalculator.Controllers
 {
@@ -14,10 +15,12 @@ namespace SimpleCreditCalculator.Controllers
         private readonly ILogger<CreditController> _logger;
         private readonly ICreditCalculatorService _creditCalculatorService;
 
-        public CreditController(ICreditCalculatorService creditCalculatorService, ILogger<CreditController> logger)
+        public CreditController(
+            ICreditCalculatorService creditCalculatorService,
+            ILogger<CreditController> logger)
         {
-            _creditCalculatorService = creditCalculatorService;
-            _logger = logger;
+            _creditCalculatorService = creditCalculatorService ?? throw new ArgumentNullException(nameof(creditCalculatorService));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
         
         [HttpGet]
@@ -31,6 +34,8 @@ namespace SimpleCreditCalculator.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ModelState.AddModelError(string.Empty, "One or some parameter(-s) of credit is not valid.");
+
                 return RedirectToAction("Index", "Credit");
             }
 

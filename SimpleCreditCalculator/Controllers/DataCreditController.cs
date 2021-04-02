@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-
+using SimpleCreditCalculator.BL.Services.Interfaces;
 using SimpleCreditCalculator.Models;
 using SimpleCreditCalculator.Models.Interfaces;
-using SimpleCreditCalculator.Services.Interfaces;
-
 using System.Threading.Tasks;
+using System;
 
 namespace SimpleCreditCalculator.Controllers
 {
@@ -23,8 +22,8 @@ namespace SimpleCreditCalculator.Controllers
             ICreditCalculatorService creditCalculatorService,
             ILogger<DataCreditController> logger)
         {
-            _creditCalculatorService = creditCalculatorService ?? throw new System.ArgumentNullException(nameof(creditCalculatorService));
-            _logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
+            _creditCalculatorService = creditCalculatorService ?? throw new ArgumentNullException(nameof(creditCalculatorService));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         /// <summary>

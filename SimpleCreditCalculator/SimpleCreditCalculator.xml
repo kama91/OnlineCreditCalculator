@@ -16,10 +16,5 @@
             <param name="inputDataCredit"></param>
             <returns></returns>
         </member>
-        <member name="M:SimpleCreditCalculator.Services.Interfaces.ICreditCalculatorService.GetOutputCreditDetails(SimpleCreditCalculator.Models.Interfaces.IInputDataCredit)">
-            <summary>
-            Получить рассчитанные данные по кредиту
-            </summary>
-        </member>
     </members>
 </doc>
