@@ -7,11 +7,11 @@ namespace SimpleCreditCalculator.Models
 {
     public class OutputDataCredit : IOutputDataCredit
     {
-        public List<PaymentDetails> PaymentDetails { get; }
+        public IReadOnlyCollection<PaymentDetails> PaymentDetails { get; }
         public decimal OverPayment { get; }
 
         public OutputDataCredit(
-            IEnumerable<IPaymentDetails> paymentDetails,
+            IReadOnlyCollection<IPaymentDetails> paymentDetails,
             decimal overPayment)
         {
             PaymentDetails = paymentDetails.Cast<PaymentDetails>().ToList();
