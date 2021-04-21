@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using SimpleCreditCalculator.BL.Services.Interfaces;
 using SimpleCreditCalculator.Models;
@@ -17,10 +16,9 @@ namespace SimpleCreditCalculator.Services
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public Task<IOutputDataCredit> GetOutputCreditDetails(IInputDataCredit inputDataCredit)
+        public IOutputDataCredit GetOutputCreditDetails(IInputDataCredit inputDataCredit)
         {
-            return Task.Run(() =>
-            {
+            
                 if (inputDataCredit == null)
                 {
                     throw new ArgumentNullException(nameof(inputDataCredit));
@@ -47,8 +45,7 @@ namespace SimpleCreditCalculator.Services
                     date = date.AddMonths(1);
                 }
                
-                return (IOutputDataCredit)new OutputDataCredit(paymentsDetails, GetOverPayment(inputDataCredit));
-            });
+                return new OutputDataCredit(paymentsDetails, GetOverPayment(inputDataCredit));
         }
 
         private decimal GetAmountPayment(IInputDataCredit inputDataCredit)

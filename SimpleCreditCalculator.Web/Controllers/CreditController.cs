@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NSwag.Annotations;
@@ -30,7 +29,7 @@ namespace SimpleCreditCalculator.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PaymentsSchedule(InputDataCredit inputDataCredit)
+        public IActionResult PaymentsSchedule(InputDataCredit inputDataCredit)
         {
             if (!ModelState.IsValid)
             {
@@ -39,7 +38,7 @@ namespace SimpleCreditCalculator.Controllers
                 return RedirectToAction("Index", "Credit");
             }
 
-            var creditDetails = await _creditCalculatorService.GetOutputCreditDetails(inputDataCredit);
+            var creditDetails = _creditCalculatorService.GetOutputCreditDetails(inputDataCredit);
 
             return View(creditDetails);
         }

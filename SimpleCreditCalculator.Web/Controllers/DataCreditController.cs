@@ -2,8 +2,6 @@
 using Microsoft.Extensions.Logging;
 using SimpleCreditCalculator.BL.Services.Interfaces;
 using SimpleCreditCalculator.Models;
-using SimpleCreditCalculator.Models.Interfaces;
-using System.Threading.Tasks;
 using System;
 
 namespace SimpleCreditCalculator.Controllers
@@ -32,11 +30,11 @@ namespace SimpleCreditCalculator.Controllers
         /// <param name="inputDataCredit"></param>
         /// <returns></returns>
         [HttpGet("creditdetails")]
-        public async Task<OutputDataCredit> GetOutputCreditDetails([FromBody] InputDataCredit inputDataCredit)
+        public OutputDataCredit GetOutputCreditDetails([FromBody] InputDataCredit inputDataCredit)
         {
-            var creditDetails = await _creditCalculatorService.GetOutputCreditDetails(inputDataCredit);
+            var creditDetails = _creditCalculatorService.GetOutputCreditDetails(inputDataCredit);
 
-            return (OutputDataCredit)creditDetails;
+            return (OutputDataCredit)creditDetails;// TODO вместо каста сделать маппером
         }
     }
 }
